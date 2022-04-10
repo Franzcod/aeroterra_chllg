@@ -138,7 +138,7 @@ body
 .btn-cont{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: fit-content;
@@ -159,4 +159,8 @@ body
     font-weight: bold;
     /* border-width: 1px; */
     /* border-style: groove; */
+}
+
+#btn_myLocation{
+    background-color: rgb(170, 133, 133)
 }

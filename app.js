@@ -18,7 +18,6 @@ function success(pos) {
   var crd = pos.coords;
   my_localization.latitude = Number(crd.latitude.toFixed(2));
   my_localization.longitude = Number(crd.longitude.toFixed(2));
-  //   console.log(my_localization);
 }
 
 function error(err) {
@@ -30,6 +29,8 @@ var map = L.map("map", {
   center: [-34.60772172145942, -58.37041396110046],
   zoom: 13,
 });
+
+const markerGroup = L.layerGroup().addTo(map);
 
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
@@ -45,25 +46,36 @@ L.tileLayer(
   }
 ).addTo(map);
 
+// al hacer click muestra una alerta con los datos del punto
 function onMapClick(e) {
-  //   console.log(e.latlng);
-  alert("You clicked the map at " + e.latlng);
+  alert("Click =>  " + e.latlng["lat"] + ", " + e.latlng["lng"]);
 }
 
 map.on("click", onMapClick);
 
+// lectura de base de datos ( json) y creacion de marcadores
 window.onload = function () {
   store.forEach(function (element) {
     var marker = L.marker([
       element.coordenadas.split(",")[0],
       element.coordenadas.split(",")[1],
-    ]).addTo(map);
-    marker.bindPopup(
-      `<b>Nombre:</b><span> ${element.nombre} <br/><b>Dirección:</b><span> ${element.direccion} <br/><b>Teléfono:</b><span> ${element.telefono} <br/><b>(X,Y):</b><span> ${element.coordenadas} <br/> <b>Categoría:</b><span> ${element.categoria} <br/>`
-    );
+    ]).addTo(markerGroup);
+    const popup = `<b>Nombre:</b><span> ${element.nombre} <br/><b>Dirección:</b><span> ${element.direccion} <br/><b>Teléfono:</b><span> ${element.telefono} <br/><b>(X,Y):</b><span> ${element.coordenadas} <br/> <b>Categoría:</b><span> ${element.categoria} <br/> <p>(doble click para eliminar)</p>`;
+    marker.on("dblclick", function () {
+      markerGroup.removeLayer(marker);
+    });
+
+    marker.bindPopup(popup);
+    marker.on("mouseover", function (e) {
+      this.openPopup();
+    });
+    marker.on("mouseout", function (e) {
+      this.closePopup();
+    });
   });
 };
 
+// obtener mi ubicacion y marcar en el mapa al apretar el boton "Mi ubicacion"
 let btn_mi_ubicacion = document.getElementById("btn_myLocation");
 btn_mi_ubicacion.addEventListener("click", function () {
   let circle = L.circle([-34.50676, -58.762994], {
@@ -71,17 +83,17 @@ btn_mi_ubicacion.addEventListener("click", function () {
     fillColor: "#f03",
     fillOpacity: 0.5,
     radius: 500,
-  }).addTo(map);
+  }).addTo(markerGroup);
   circle.bindPopup("Estoy por aqui.");
 });
 
 const btn_search = document.getElementById("btn_search");
 
+// Logica del boton "Marcar"
 btn_search.addEventListener("click", function () {
   const nombre = document.getElementsByClassName("form-control")[0].value;
   const direccion = document.getElementsByClassName("form-control")[1].value;
   const telefono = document.getElementsByClassName("form-control")[2].value;
-
   const categoria = document.getElementsByClassName("form-control-select")[0]
     .value;
   const coordenadas = document.getElementsByClassName("form-control")[3].value;
@@ -119,9 +131,22 @@ btn_search.addEventListener("click", function () {
       fillOpacity: 0.5,
       radius: 500,
     }
-  ).addTo(map);
-  const popup = `<b>Nombre:</b><span> ${nombre} <br/><b>Dirección:</b><span> ${direccion} <br/><b>Teléfono:</b><span> ${telefono} <br/><b>(X,Y):</b><span> ${coordenadas} <br/> <b>Categoría:</b><span> ${categoria} <br/>`;
+  ).addTo(markerGroup);
+  const popup = `<b>Nombre:</b><span> ${nombre} <br/><b>Dirección:</b><span> ${direccion} <br/><b>Teléfono:</b><span> ${telefono} <br/><b>(X,Y):</b><span> ${coordenadas} <br/> <b>Categoría:</b><span> ${categoria} <br/> <p>(doble click para eliminar)</p>`;
+  //   doble click para eliminar marcador
+  mark.on("dblclick", function () {
+    markerGroup.removeLayer(mark);
+  });
+
   mark.bindPopup(popup);
+
+  //   muestra datos al posar el mouse encima
+  mark.on("mouseover", function (e) {
+    this.openPopup();
+  });
+  mark.on("mouseout", function (e) {
+    this.closePopup();
+  });
 
   store.push(lugar);
   console.table(store);
