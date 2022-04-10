@@ -2,16 +2,20 @@ html,
 body
 {
     font-family: monospace;
+    margin : 0;
+    padding: 0;
 }
 
 #header{
     display: flex;
     width: 100%;
     /* height: fit-content; */
+    justify-content: space-between;
     flex-direction: row;
     background-color: rgb(129, 179, 49);
     padding: 10px ;
     margin-bottom: 10px;
+    min-width: 380px;
 }
 
 .cont_img{
@@ -42,7 +46,7 @@ body
 .titulo{
     margin: 0 auto;
     color: aliceblue;
-    font-size: 30px;
+    font-size: calc(1.5em + 1vw);
     font-weight: bold;
     font-family: monospace;
     align-items: center;
@@ -65,6 +69,8 @@ body
     height: 500px;
     border: 2px solid black;
     z-index: 1;
+    margin: 0 auto;
+    min-width: 380px;
 }
 
 .botones{
@@ -89,8 +95,8 @@ body
 .formulario{
     border-radius: 8px;
     position: fixed;
-    top: 100px;
-    right: 20px;
+    top: 130px;
+    right: 25px;
     z-index: 10;
 }
 
@@ -159,6 +165,26 @@ body
     font-weight: bold;
     /* border-width: 1px; */
     /* border-style: groove; */
+}
+
+#openInput{
+    border-radius: 8px;
+    position: fixed;
+    top: 95px;
+    right: 25px;
+    z-index: 11;
+    background-color: aliceblue;
+    padding: 5px;
+    border-style: outset;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.desaparecer{
+    display: none;
+}
+.aparecer{
+    display: block;
 }
 
 #btn_myLocation{

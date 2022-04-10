@@ -149,5 +149,4 @@ btn_search.addEventListener("click", function () {
   });
 
   store.push(lugar);
-  console.table(store);
 });
