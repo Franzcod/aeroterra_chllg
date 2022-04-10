@@ -5,22 +5,14 @@ const my_localization = {
   longitude: "",
 };
 
-let store = [
-  {
-    nombre: "Casa Rosada",
-    direccion: "Balcarce 50",
-    coordenadas: "-34.608248, -58.370115",
-    telefono: "011-111-111",
-    categoria: "Casa de Gobierno",
-  },
-  {
-    nombre: "Sheraton Hotel",
-    direccion: "calle 123",
-    coordenadas: "-34.599143, -58.376498",
-    telefono: "011-111-111",
-    categoria: "Hotel",
-  },
-];
+let store = [];
+
+// Json con los datos de base de datos
+fetch("./data.json")
+  .then((response) => {
+    return response.json();
+  })
+  .then((jsondata) => (store = jsondata.store));
 
 function success(pos) {
   var crd = pos.coords;
@@ -94,6 +86,13 @@ btn_search.addEventListener("click", function () {
     .value;
   const coordenadas = document.getElementsByClassName("form-control")[3].value;
 
+  //   Si ya existen esas connrdenadas, no se agrega
+  store.forEach(function (element) {
+    if (element.coordenadas == coordenadas) {
+      return alert("Ubicacion ya marcada");
+    }
+  });
+
   if (
     nombre == "" ||
     direccion == "" ||
@@ -112,9 +111,7 @@ btn_search.addEventListener("click", function () {
     coordenadas: coordenadas,
   };
 
-  console.log(lugar);
-
-  let circle = L.marker(
+  let mark = L.marker(
     [Number(coordenadas.split(",")[0]), Number(coordenadas.split(",")[1])],
     {
       color: "red",
@@ -124,7 +121,8 @@ btn_search.addEventListener("click", function () {
     }
   ).addTo(map);
   const popup = `<b>Nombre:</b><span> ${nombre} <br/><b>Dirección:</b><span> ${direccion} <br/><b>Teléfono:</b><span> ${telefono} <br/><b>(X,Y):</b><span> ${coordenadas} <br/> <b>Categoría:</b><span> ${categoria} <br/>`;
-  circle.bindPopup(popup);
+  mark.bindPopup(popup);
 
-  //   store.push(lugar);
+  store.push(lugar);
+  console.table(store);
 });

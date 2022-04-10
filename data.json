@@ -1,0 +1,20 @@
+{
+    "store": [
+                {
+                    "nombre": "Casa Rosada",
+                    "direccion": "Balcarce 50",
+                    "coordenadas": "-34.608248, -58.370115",
+                    "telefono": "011-111-111",
+                    "categoria": "Casa de Gobierno"
+                },
+                {
+                    "nombre": "Sheraton Hotel",
+                    "direccion": "calle 123",
+                    "coordenadas": "-34.599143, -58.376498",
+                    "telefono": "011-111-111",
+                    "categoria": "Hotel"
+                }
+            ]
+}
+
+
