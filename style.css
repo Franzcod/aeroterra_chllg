@@ -122,12 +122,13 @@ body
 
 .form-control, .form-control-select{
     margin: 5px 10px;
-    border-color: aqua;
+    border: none;
+    /* border-color: aqua; */
     padding: 3px;
     padding-left: 6px;
     border-radius: 5px;
     border-width: 1px;
-    border-style: groove;
+    /* border-style: groove; */
 }
 
 .form-control-select{

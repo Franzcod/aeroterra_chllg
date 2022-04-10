@@ -17,7 +17,6 @@
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
       crossorigin=""
     ></script>
-    <script type="module" src="./init.js"></script>
   </head>
   <body>
     <div id="header">
@@ -237,7 +236,7 @@
       </div>
     </div>
 
-    <div class="formulario">
+    <div class="formulario" id="form_send">
       <div class="form-cont">
         <div class="form-group">
           <label for="">Lugar</label>
@@ -259,6 +258,27 @@
         </div>
 
         <div class="form-group">
+          <label for="">Telefono</label>
+          <input
+            type="text"
+            class="form-control"
+            id=""
+            placeholder="ej:  54 9 11 5272 0900
+"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="">Categoria</label>
+          <select class="form-control-select" name="cat">
+            <option value="Seleccionar">Seleccionar</option>
+            <option value="Residencia">Residencia</option>
+            <option value="Comercial">Comercial</option>
+            <option value="Mixta">Mixta</option>
+          </select>
+        </div>
+
+        <div class="form-group">
           <label for="">Coord.</label>
           <input
             type="text"
@@ -269,7 +289,8 @@
         </div>
 
         <div class="btn-cont">
-          <button type="submit" class="btn">Buscar</button>
+          <button id="btn_myLocation">Mi ubicacion</button>
+          <button type="submit" class="btn" id="btn_search">Buscar</button>
         </div>
       </div>
     </div>
