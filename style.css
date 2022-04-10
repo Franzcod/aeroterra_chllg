@@ -9,7 +9,6 @@ body
 #header{
     display: flex;
     width: 100%;
-    /* height: fit-content; */
     justify-content: space-between;
     flex-direction: row;
     background-color: rgb(129, 179, 49);
@@ -23,7 +22,6 @@ body
     width: fit-content;
     background-color: transparent;
     margin: 0;
-    /* background-color: aliceblue; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -57,7 +55,6 @@ body
     width: fit-content;
     background-color: transparent;
     margin: 0;
-    /* background-color: aliceblue; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -76,20 +73,15 @@ body
 .botones{
     position: fixed;
     height: fit-content;
-    /* background-color: aqua; */
 }
 
 .cont_footer{
-    /* background-color: aqua; */
     text-align: center;
 }
 
 .cont_footer:first-child{
-    /* background-color: rgb(68, 160, 132); */
     margin: 10px auto ;
     
-    /* align-items: center; */
-    /* justify-content: center; */
 }
 
 .formulario{
@@ -118,7 +110,6 @@ body
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* background-color: aquamarine; */
     align-items: center;
 }
 
@@ -129,12 +120,10 @@ body
 .form-control, .form-control-select{
     margin: 5px 10px;
     border: none;
-    /* border-color: aqua; */
     padding: 3px;
     padding-left: 6px;
     border-radius: 5px;
     border-width: 1px;
-    /* border-style: groove; */
 }
 
 .form-control-select{
@@ -148,23 +137,20 @@ body
     align-items: center;
     width: 100%;
     height: fit-content;
-    /* background-color: aqua; */
     border-radius: 8px;
     margin: 10px auto 5px ;
 }
 
 .btn-cont button{
-    /* margin: 5px 10px; */
     margin-right: 10px;
     padding: 3px 5px;
     border-radius: 5px;
     background-color: yellowgreen;
     color: aliceblue;
-    border:  none;
-    border-color: aqua;
+    border-style: outset;
+    border-color: aliceblue;
     font-weight: bold;
-    /* border-width: 1px; */
-    /* border-style: groove; */
+    cursor: pointer;
 }
 
 #openInput{
@@ -188,5 +174,6 @@ body
 }
 
 #btn_myLocation{
-    background-color: rgb(170, 133, 133)
+    background-color: rgb(170, 133, 133);
+    cursor: pointer ;
 }
